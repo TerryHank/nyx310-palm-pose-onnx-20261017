@@ -33,9 +33,10 @@ class Nyx310RgbdCamera:
         self.sdk = ScepterSdk(ROOT / "bin")
         info = self.sdk.open(self.ip, self.allow_discovery, require_ai=False,
                              start_stream=not self.capture_profile)
+        product=next((d['product_name'] for d in info.get('discovered_devices',[]) if d['ip']==self.ip),'NYX310')
         if self.capture_profile:
             from nyx310_capture_profile import configure_capture
-            info['capture_profile'] = configure_capture(self.sdk)
+            info['capture_profile'] = configure_capture(self.sdk,None if 'NYX320' in product.upper() else (800,600))
         if self.rgb_exposure_cap_us is not None:
             mode_getter=self.sdk.base.scGetExposureControlMode
             mode_getter.argtypes=[c.c_void_p,c.c_int,c.POINTER(c.c_int)]
@@ -76,7 +77,7 @@ class Nyx310RgbdCamera:
             max=range_max.value if status == 0 else None,
         )
         info.update(
-            camera="NYX310", driver="Scepter BaseSDK",
+            camera=product, driver="Scepter BaseSDK",
             calibration=self.calibration.metadata,
             sync_policy="exact RGB/depth deviceTimestamp equality",
             depth_registration="manufacturer depth-to-color projection",

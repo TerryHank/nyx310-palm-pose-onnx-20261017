@@ -2,7 +2,7 @@
 import ctypes as c
 
 
-def configure_capture(sdk):
+def configure_capture(sdk,color_resolution=(800,600)):
     for name in ('Color', 'ToF'):
         function = getattr(sdk.base, f'scGet{name}Resolution')
         function.argtypes = [c.c_void_p, c.POINTER(c.c_int32), c.POINTER(c.c_int32)]
@@ -27,11 +27,12 @@ def configure_capture(sdk):
         return values
 
     before = read()
-    if before['Color'] != [800, 600]:
-        sdk._check(sdk.base.scSetColorResolution(sdk.device, 800, 600), 'set RGB 800x600')
+    target=before['Color'] if color_resolution is None else list(color_resolution)
+    if before['Color'] != target:
+        sdk._check(sdk.base.scSetColorResolution(sdk.device, *target), f'set RGB {target[0]}x{target[1]}')
     if before['fps'] != 15:
         sdk._check(sdk.base.scSetFrameRate(sdk.device, 15), 'set 15 FPS')
     after = read()
-    if after['Color'] != [800, 600] or after['fps'] != 15 or after['ToF'] != before['ToF']:
-        raise RuntimeError(f'NYX310 capture profile readback mismatch: {after}')
+    if after['Color'] != target or after['fps'] != 15 or after['ToF'] != before['ToF']:
+        raise RuntimeError(f'capture profile readback mismatch: {after}')
     return dict(before=before, active=after, applied_on_each_launch=True)

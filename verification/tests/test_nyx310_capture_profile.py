@@ -49,6 +49,13 @@ class CaptureProfileTests(unittest.TestCase):
         sdk.base.scSetColorResolution.assert_not_called()
         sdk.base.scSetFrameRate.assert_not_called()
 
+    def test_nyx320_profile_preserves_device_selected_color_resolution(self):
+        sdk,_=self.sdk(rgb=(1920,1080),fps=30)
+        result=configure_capture(sdk,color_resolution=None)
+        self.assertEqual(result['active'],dict(Color=[1920,1080],ToF=[640,480],fps=15))
+        sdk.base.scSetColorResolution.assert_not_called()
+        sdk.base.scSetToFResolution.assert_not_called()
+
     def test_reject_silent_setter_failure(self):
         sdk, _ = self.sdk()
         sdk.base.scSetColorResolution.side_effect = None

@@ -50,7 +50,7 @@ def main():
     parser.add_argument('--ip',type=validate_ipv4,default='192.168.1.101')
     parser.add_argument('--duration-sec',type=float,default=0)
     parser.add_argument('--map-extent',type=float,default=1.5)
-    parser.add_argument('--palm-confidence',type=float,default=.55)
+    parser.add_argument('--palm-confidence',type=float,default=.45)
     parser.add_argument('--pose-confidence',type=float,default=.6)
     parser.add_argument('--rgb-exposure-cap-us',type=int,default=8000)
     parser.add_argument('--source',type=Path)
@@ -75,7 +75,7 @@ def main():
                  models=[dict(path=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest())
                          for p in (tracker.palm_path,tracker.pose_path)],
                  palm_confidence=args.palm_confidence,pose_confidence=args.pose_confidence,
-                 classes=['OPEN','PINCH','GRIP'],roi_policy='Palm on acquisition/reacquisition; Hand Pose on Kalman-predicted ROI; predict up to250ms before full detection',
+                 classes=['OPEN','PINCH','GRIP'],roi_policy='Hand Pose first on padded Kalman ROI; immediate Palm fallback on failure; retain last ROI for at most3 misses and250ms; inner/outer crop minimum24px and aspect floor0.35',
                  reference='(wrist0+middle_mcp9)/2; contracted palm ROI median + MAD + ToF calibration',
                  xyz_coordinates='RGB camera X right,Y down,Z forward; mm',
                  prediction_is_measurement=False,rgb_exposure_cap_policy='temporary auto-exposure ceiling, restored on exit',
@@ -94,6 +94,7 @@ def main():
         else:
             camera=Nyx310RgbdCamera(args.ip,allow_discovery=True,capture_profile=True,rgb_exposure_cap_us=args.rgb_exposure_cap_us)
             session['camera']=camera.open()
+            title=f"{session['camera']['camera']} | PC Palm + Hand Pose | OPEN / PINCH / GRIP"
         (output/'session.json').write_text(json.dumps(session,indent=2),encoding='utf-8')
         if not args.no_window:
             cv2.namedWindow(title,cv2.WINDOW_NORMAL);cv2.resizeWindow(title,1400,880)
@@ -120,7 +121,7 @@ def main():
                         if not writer.isOpened():raise RuntimeError('Cannot open RGB replay writer')
                     writer.write(image)
                 frames+=1;t0=time.perf_counter()
-                hand=tracker.infer(image,now)
+                hand=tracker.infer(image,now,packet['depth_mm'] if packet is not None and packet['timestamp_match'] else None)
                 infer_ms=(time.perf_counter()-t0)*1000;model_ms.append(infer_ms)
                 xyz=None;gesture=None;geometry={};depth_info=dict(reason='no_current_landmarks')
                 if hand is not None:
@@ -138,6 +139,8 @@ def main():
                 record=dict(frame_index=frames,timestamp_ms=stamp,source='host',data=data,
                             inference_ms=round(infer_ms,3),palm_calls=tracker.palm_calls,
                             pose_calls=tracker.pose_calls,kalman_predictions=tracker.predictions,
+                            tof_roi_calls=tracker.tof_roi_calls,
+                            acquisition_source=None if hand is None else hand['source'],
                             rule_features=geometry,depth=depth_info,
                             roi=None if hand is None else hand['roi_small'])
                 log.write(json.dumps(record)+'\n')
@@ -162,6 +165,7 @@ def main():
                             current_states=[h['state'] for h in hands],valid_positions=valid,
                             tracking_status=tracker.status,palm_calls=tracker.palm_calls,pose_calls=tracker.pose_calls,
                             kalman_predictions=tracker.predictions)
+                status['tof_roi_calls']=tracker.tof_roi_calls
                 (output/'viewer_status.json').write_text(json.dumps(status,indent=2),encoding='utf-8')
                 if not args.no_window:
                     cv2.imshow(title,latest);key=cv2.waitKeyEx(1)
@@ -190,6 +194,7 @@ def main():
                  hand_observations=observations,valid_positions=valid,matched_depth_frames=matched,
                  frame_timeouts=timeouts,gestures=dict(counts),depth_reasons=dict(reasons),
                  palm_calls=tracker.palm_calls,pose_calls=tracker.pose_calls,kalman_predictions=tracker.predictions,
+                 tof_roi_calls=tracker.tof_roi_calls,
                  average_model_ms=float(np.mean(model_ms)) if model_ms else None,
                  failure=failure,local_inference=True,camera_ai_api_used=False,
                  camera_test_executed=camera is not None and frames>0,

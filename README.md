@@ -29,6 +29,14 @@ verification\.venv-mediapipe\Scripts\python.exe -m pip install -r requirements.t
 未提供 SDK 时可用 `-Source '图片或视频路径' -NoWindow` 离线运行，离线 RGB 不输出虚构深度。
 详细说明：`verification/PALM_POSE_PC_START.txt`。
 
+## 侧面识别修复
+
+`main` 在基线后加入骨骼 ROI 优先、跟踪失败立即重检、内外两层窄裁剪保护，
+以及仅在搜索失败时使用 ToF 前景裁剪辅助重捕获。没有更换 ONNX 或训练模型。
+前端仍显示骨架、类别检测框、青色掌内 ROI、固定参考点和 X-Z 位置。
+具体改动、复现检查和限制见 [SIDE_VIEW_FIX.md](SIDE_VIEW_FIX.md)。
+脱敏检查结果在 `verification/reports/side_view_20261017.json`，不包含现场图像。
+
 ## 模型与边界
 
 官方源：

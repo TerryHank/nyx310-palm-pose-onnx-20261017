@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-17",
+  "baseline_commit": "f4c64106bf5c51dc651c136273e8fedb16b92241",
+  "baseline_tag": "baseline-20261017",
+  "hardware": "NYX310",
+  "backend": "PC OpenCV DNN CPU",
+  "camera_ai_api_used": false,
+  "nyx320_hardware_or_npu_tested": false,
+  "thresholds": {"palm": 0.45, "pose": 0.6},
+  "same_video_comparison": {
+    "frames": 510,
+    "baseline_hand_frames": 168,
+    "fixed_hand_frames": 224,
+    "hand_frame_increase_percent": 33.3333,
+    "ground_truth_annotated": false,
+    "is_accuracy_measurement": false
+  },
+  "first_live_test": {
+    "frames": 803,
+    "failure": "TypeError: NoneType object is not subscriptable",
+    "cause": "degenerate next ROI was None",
+    "fixed_with_regression_test": true
+  },
+  "full_failed_video_regression": {"frames": 803, "hand_frames": 611, "failure": null},
+  "final_live_test": {
+    "elapsed_sec": 30.313,
+    "frames": 441,
+    "fps": 14.55,
+    "hand_frames": 421,
+    "valid_position_frames": 284,
+    "matched_depth_frames": 441,
+    "frame_timeouts": 0,
+    "acquisition_sources": {"tracked_roi": 384, "palm_detection": 36, "tof_palm_detection": 1},
+    "tof_crop_calls": 14,
+    "average_model_ms": 19.1879,
+    "failure": null,
+    "rgb_resolution": [800, 600],
+    "capture_fps": 15,
+    "sdk_depth_range_mm": [600, 3600],
+    "depth_range_changed": false,
+    "entry_rgb_exposure_cap_us": 8000,
+    "exit_rgb_exposure_cap_us": 8000,
+    "camera_close_statuses": {"scStopStream": 0, "scCloseDevice": 0, "scShutdown": 0}
+  },
+  "unit_tests": {"palm_pose_pc": 7, "palm_position": 6, "capture_profile": 5, "camera_data": 12, "total_passed": 30},
+  "limitations": ["pure side-on first entry not guaranteed", "gesture accuracy not manually quantified", "ToF can be invalid while RGB hand detection succeeds"]
+}

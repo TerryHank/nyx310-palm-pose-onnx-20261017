@@ -10,6 +10,21 @@ from palm_position import palm_geometry, measure_palm, PalmTracker
 
 
 class PalmPositionTests(unittest.TestCase):
+    def test_diagonal_thin_palm_has_depth_without_three_image_quadrants(self):
+        points=np.zeros((21,3),np.float64)
+        for i,(x,y) in {0:(145,145),1:(137,140),5:(65,70),9:(60,60),13:(70,65),17:(140,137)}.items():
+            points[i,:2]=[x,y]
+        depth=np.full((200,200),800,np.float32)
+        K=np.array([[200.,0,100],[0,200.,100],[0,0,1]])
+        xyz,info=measure_palm(points,depth,K,np.zeros(8))
+        self.assertIsNotNone(xyz,info)
+        self.assertEqual(info['spatial_support_method'],'palm_major_axis')
+        self.assertEqual(float(xyz[2]),800.)
+        # A tiny surviving fragment must still fail in the thin-palm branch.
+        depth[:]=0;depth[97:103,97:103]=800
+        xyz,info=measure_palm(points,depth,K,np.zeros(8))
+        self.assertIsNone(xyz)
+
     def setUp(self):
         self.points = np.zeros((21, 3), np.float32)
         for i, xy in {0:(100,140),1:(65,120),5:(65,65),9:(100,55),

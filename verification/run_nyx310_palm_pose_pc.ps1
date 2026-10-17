@@ -2,7 +2,7 @@ param(
     [string]$Ip = '192.168.1.101',
     [ValidateRange(0,86400)][int]$DurationSec = 0,
     [ValidateRange(0.5,20)][double]$MapExtent = 1.5,
-    [ValidateRange(0.01,0.99)][double]$PalmConfidence = 0.55,
+    [ValidateRange(0.01,0.99)][double]$PalmConfidence = 0.45,
     [ValidateRange(0.01,0.99)][double]$PoseConfidence = 0.6,
     [ValidateRange(1000,65000)][int]$RgbExposureCapUs = 8000,
     [string]$Source,

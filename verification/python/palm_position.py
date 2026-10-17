@@ -52,7 +52,19 @@ def measure_palm(points, depth_mm, K, distortion, matched=True):
     quadrants = (xx[keep] >= center[0]).astype(int) + 2 * (yy[keep] >= center[1]).astype(int)
     coverage = len(inliers) / area
     info.update(depth_coverage=coverage, covered_quadrants=int(len(np.unique(quadrants))))
-    if coverage < .01 or len(np.unique(quadrants)) < 3:
+    spatial_support=len(np.unique(quadrants))>=3
+    _,singular,axes=np.linalg.svd(polygon-center,full_matrices=False)
+    if singular[0]>3*max(singular[1],1e-6):
+        # A diagonal, edge-on palm can occupy only two IMAGE quadrants even
+        # when depths span the whole palm. Check support along its own axis.
+        roi_axis=(polygon-center)@axes[0]
+        samples_axis=(np.column_stack((xx[keep],yy[keep]))-center)@axes[0]
+        span=float(np.ptp(roi_axis))
+        bins=np.clip(((samples_axis-roi_axis.min())/max(span,1e-6)*4).astype(int),0,3)
+        axis_coverage=float(np.ptp(samples_axis))/max(span,1e-6)
+        spatial_support=len(np.unique(bins))>=3 and axis_coverage>=.5
+        info.update(spatial_support_method='palm_major_axis',axis_bins=int(len(np.unique(bins))),axis_coverage=axis_coverage)
+    if coverage < .01 or not spatial_support:
         return None, dict(info, reason="insufficient_spatial_support")
     depth = float(np.median(inliers))
     ray = cv2.undistortPoints(reference.reshape(1, 1, 2).astype(np.float64),
