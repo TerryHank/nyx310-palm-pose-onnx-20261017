@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv*/
+verification/captures/
+verification/models/
+verification/local_checks/
+verification/bin/*
+!verification/bin/rgbd_batch.dll
+.env
+.env.*
+*.log
+*.avi
+*.mp4
+*.npz

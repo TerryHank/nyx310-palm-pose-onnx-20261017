@@ -1,0 +1,63 @@
+NYX310 电脑端 Palm + Hand Pose ONNX / ROI-Kalman / ToF / OPEN-PINCH-GRIP
+
+启动（原命令现在默认电脑后端）：
+& 'D:\Workspace\nyx310-yolov8-ainn-20260921\verification\run_nyx310_palm_position.ps1'
+或专用入口：
+& 'D:\Workspace\nyx310-yolov8-ainn-20260921\verification\run_nyx310_palm_pose_pc.ps1'
+
+当前实际设备是NYX310，IP192.168.1.101；未更换为粘贴方案中的NYX320。
+使用已有隔离.venv-mediapipe环境，OpenCV DNN CPU运行两个未量化ONNX，无需训练。
+首次/持续丢失后全图Palm找手；后续以21关键点构造ROI，通过恒速Kalman预测下帧ROI。
+短时缺失最多250ms只预测ROI并尝试真实Hand Pose；持续丢失重新全图检测。
+预测ROI不等于新的关键点检测，也不会生成valid:true的预测深度。
+只处理一个手部目标，无手ID、身份关联表或历史手列表。
+电脑端画出21关键点骨架、关键点外包检测框，框上显示OPEN/PINCH/GRIP与模型置信度。
+青色多边形为掌内收缩取深度ROI，白色十字为固定手掌定位参考点。
+仅绘制当前真实识别到的关键点，预测阶段不画虚构骨架；原始图和推理输入不被覆盖。
+
+类别：OPEN=四指伸直；PINCH=拇食指尖接近且不是整体收拢的拳型；GRIP=多指弯曲。
+使用模型相对3D点的关节角、伸展比和掌宽归一化指尖距离；不是训练得到的手势概率。
+有效关键点仅在三类中选择，不输出UNKNOWN。confidence为模型手存在置信度，规则scores不是概率。
+规则加入3帧/120ms切换防抖。GRIP只代表抓握手型，不代表抓牢物体。
+
+XYZ(mm)：参考=(wrist0+middle_mcp9)/2；掌内收缩ROI取对齐ToF深度中位数；
+排除无效深度和MAD离群点，按真实RGB内参/畸变反投影，位置时间滤波。
+RGB/ToF时间戳必须匹配；没有有效深度时不伪造XYZ。
+手仍检出而深度失效时HOLD旧位置、valid=false；没有当前关键点时hand_present=false、hands=[]。
+XYZ为RGB相机坐标，X右/Y下/Z前；右侧俯视图使用X-Z，不是房间坐标。
+
+实时窗口：RGB叠加骨架/检测框/类型 + 三类/XYZ + 右侧俯视 + 下方LOCAL ONNX JSON。
+Q/Esc/关窗口退出，S截图，J隐藏/显示JSON，PgUp/PgDn翻JSON。
+输出在captures/nyx310-palm-pose-pc-<时间>/：session.json、results.jsonl、latest.json、
+viewer_status.json、ready.json、best_display.jpg、valid_depth_sample.npz，退出保存summary.json。
+
+采集固定RGB800x600、15FPS、ToF保持原设置；初始Palm阈值0.55、Pose阈值0.6。
+为减少运动模糊，电脑后端临时将自动RGB曝光上限限制为8000us（8ms），退出读回恢复原上限。
+相机若为手动曝光模式则不改模式。曝光缩短可能增加噪声/降低亮度，必要时增加场景照明。
+不写入相机永久初始化配置，不修改ToF曝光或设备固件。
+专用入口可用-PalmConfidence、-PoseConfidence、-RgbExposureCapUs调整。
+其他参数：-DurationSec 30、-NoWindow、-RecordRgb、-MapExtent 1.5。
+离线图/视频：-Source '绝对路径'；离线RGB没有ToF，XYZ为null，不拿历史数据冒充现场测量。
+录制的rgb_replay.avi是原始RGB、名义15FPS，原始相机时间戳在results.jsonl中。
+
+模型来源与已核实SHA-256：
+https://huggingface.co/opencv/palm_detection_mediapipe
+78ff51c38496b7fc8b8ebdb6cc8c1abb02fa6c38427c6848254cdaba57fcce7c
+https://huggingface.co/opencv/handpose_estimation_mediapipe
+db0898ae717b76b075d9bf563af315b29562e11f8df5027a1ef07b02bef6d81c
+OpenCV Zoo原预处理和后处理代码保留未改。
+
+2026-10-17 验证：
+3项新单元测试包含30个旋转/平移/尺度规则例、短预测/重捕获、深度HOLD，全部通过。
+原接收前端12项回归通过；图片回放OPEN检出，保存RGB-D回放得到有效XYZ。
+第一轮设备不可达，SDK发现0设备，0帧；用户接好后重试完成45秒660帧，无崩溃。
+第一轮运动模糊明显；不能把这些漏检伪装成跟踪成功。
+第二轮8ms上限实测35.437秒，510帧，约14.39FPS；OPEN101/PINCH35/GRIP20；
+118次有效ToF位置，510帧深度时间戳匹配；1次帧等待超时，无运行异常。
+曝光上限65000 -> 8000 -> 65000us，退出恢复与读回状态均为0。
+已保存两轮实际RGB视频，第一轮视频离线回放通过。没有逐帧人工标注，分类/快速挥手准确率未量化。
+录制、配准、推理、绘制的整体帧率与纯模型耗时不同，不能承诺任意动作都稳定15FPS。
+
+原相机结果接收入口仍保留，显式传-Algorithm或使用相机专用脚本时继续走相机后端：
+run_nyx310_hagrid_camera.ps1、run_nyx310_hagrid_binary_camera.ps1。
+本次没有导入或升级相机算法包，PC程序不调用相机AINN结果API。
