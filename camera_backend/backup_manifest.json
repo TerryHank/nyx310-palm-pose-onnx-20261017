@@ -1,0 +1,1341 @@
+{
+  "date": "2026-10-26",
+  "source_recovery": "recorded source patches and explicit variant copy steps",
+  "source_bitwise_equivalence_to_lost_directory_proven": false,
+  "camera_connected": false,
+  "camera_modified": false,
+  "packages_repacked": false,
+  "raw_native_packages_location": "local backup native_packages/ (not public)",
+  "public_excludes": [
+    "vendor application/runtime",
+    "device calibration",
+    "capture data",
+    "credentials"
+  ],
+  "source_files": [
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/convert_models.py",
+      "sha256": "0a4e3337e2fc09e1ec19982b6a3b2de125e369d8ca10795fe4d00237cfaf6366",
+      "history_source_sha256": "0a4e3337e2fc09e1ec19982b6a3b2de125e369d8ca10795fe4d00237cfaf6366",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/finalize.py",
+      "sha256": "937105942b7e86e7bbfcd8bbd0e92f1a980821e9f0f1c0e316c6aa7bcc339f84",
+      "history_source_sha256": "937105942b7e86e7bbfcd8bbd0e92f1a980821e9f0f1c0e316c6aa7bcc339f84",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/hagrid/convert_yolo.py",
+      "sha256": "62ac99e02fbb35fc72900ab8a2ad0d835f4651e51f8c64c1b2973c15a6ee5829",
+      "history_source_sha256": "62ac99e02fbb35fc72900ab8a2ad0d835f4651e51f8c64c1b2973c15a6ee5829",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/hagrid/export_yolo.py",
+      "sha256": "f77bbf40812eec304a358092d784263ab4e2e2a0bf07105e1f360c0b43d86b1b",
+      "history_source_sha256": "f77bbf40812eec304a358092d784263ab4e2e2a0bf07105e1f360c0b43d86b1b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/hagrid_binary/convert_yolo.py",
+      "sha256": "c5c84fcd471a9fe93e1804890e7b2f6ae674eba48da307e0738d580e40ce004d",
+      "history_source_sha256": "c5c84fcd471a9fe93e1804890e7b2f6ae674eba48da307e0738d580e40ce004d",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/hagrid_binary/export_yolo.py",
+      "sha256": "964e496d4c5a4269c6f377e2f7d62f87595986911cf6c33f6e2199cdda0a9eee",
+      "history_source_sha256": "964e496d4c5a4269c6f377e2f7d62f87595986911cf6c33f6e2199cdda0a9eee",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/lowmem/diagnostics/malloc_trace.c",
+      "sha256": "c5936c40a60d36b189a349c575d4f660d3e830bad8ca264dbad8127681f09047",
+      "history_source_sha256": "c5936c40a60d36b189a349c575d4f660d3e830bad8ca264dbad8127681f09047",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/lowmem/read_depth_rays.py",
+      "sha256": "c28eb5eb91ac8738c1e7f5d150707d231cbbcd6b6ab69bb170ba2ccd0c351c2e",
+      "history_source_sha256": "c28eb5eb91ac8738c1e7f5d150707d231cbbcd6b6ab69bb170ba2ccd0c351c2e",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/build_and_verify.sh",
+      "sha256": "95e759818eccab1f7af9986c5a50a4237906d940cb09af9cb4f47f01384b1c98",
+      "history_source_sha256": "95e759818eccab1f7af9986c5a50a4237906d940cb09af9cb4f47f01384b1c98",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/CMakeLists.txt",
+      "sha256": "ebe9d969c71c688e9c40c1562fd5a755eb1c20aebaecfd5bf9077410c6bb8cfa",
+      "history_source_sha256": "ebe9d969c71c688e9c40c1562fd5a755eb1c20aebaecfd5bf9077410c6bb8cfa",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/exports.map",
+      "sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "history_source_sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/include/hand_core.h",
+      "sha256": "de92c7f878c7582d087bc391e35615ddd47c0574130adb91e2fd132f0569f205",
+      "history_source_sha256": "de92c7f878c7582d087bc391e35615ddd47c0574130adb91e2fd132f0569f205",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/MANUAL_IMPORT.txt",
+      "sha256": "e0cd7c3926b9f1ceb7614ee6e09a304ac644db54127ba3e552cad2b63f75f602",
+      "history_source_sha256": "eddc0af1639d6eb098035026e84b0570f8403d527bbc2a0f046c24f7acdbab38",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/package_native.py",
+      "sha256": "4b075948ecf99eccfa4437738ae4a47ba8b4cdeca3a68c1e57a0b8b19bbf09ee",
+      "history_source_sha256": "1efc6e7308edbf16ce2890fefc40f0484d42e0b95075e2b0c15d853c7ff50ff2",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/prepare_stage.py",
+      "sha256": "c92c521473497d97939bb114b7132ae85cb903d2c4e06af66955b6649a6e34af",
+      "history_source_sha256": "d6632076c17b42be043f82132c74567dae048fb032fa9fbabdc3bd0256276c85",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/src/alg.cpp",
+      "sha256": "574a12c2157659a256ae0d1143b60410b9d1443565e5769ac7bbc91cba83bff4",
+      "history_source_sha256": "574a12c2157659a256ae0d1143b60410b9d1443565e5769ac7bbc91cba83bff4",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/src/hand_core.cpp",
+      "sha256": "e1cbe0f10cb1f8bc217933380beddc6d8f974a897dd769d6224c2e3d1bc0bf80",
+      "history_source_sha256": "e1cbe0f10cb1f8bc217933380beddc6d8f974a897dd769d6224c2e3d1bc0bf80",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/tests/abi_probe.cpp",
+      "sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "history_source_sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/tests/cross_core_probe.cpp",
+      "sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "history_source_sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/tests/replay_bridge.cpp",
+      "sha256": "0ed87a549581a87ff624a294b9cbc042641cb515e40859517ce7532fa7b05982",
+      "history_source_sha256": "0ed87a549581a87ff624a294b9cbc042641cb515e40859517ce7532fa7b05982",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/tests/rknn_mock.cpp",
+      "sha256": "e424f65ba18311eca3553ce1c454ff7fa1e97cc969af8fc777f5429f03bfe7c7",
+      "history_source_sha256": "e424f65ba18311eca3553ce1c454ff7fa1e97cc969af8fc777f5429f03bfe7c7",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/tests/validate_native.py",
+      "sha256": "64e42ef2b3e99c581d5f89d23cd64cc1d0106c12c9f6ddbcbf4e3ba0a69d6828",
+      "history_source_sha256": "64e42ef2b3e99c581d5f89d23cd64cc1d0106c12c9f6ddbcbf4e3ba0a69d6828",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/build_arm.sh",
+      "sha256": "ac75cdeded280e3d88e9fd11313cb7e86d4f390230f4b8f9d7c21567e1152b3f",
+      "history_source_sha256": "ac75cdeded280e3d88e9fd11313cb7e86d4f390230f4b8f9d7c21567e1152b3f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/CMakeLists.txt",
+      "sha256": "07ebe68e795a1373241e02909128d8990c1fc1902d161bce8ef08f7d6f36f32e",
+      "history_source_sha256": "07ebe68e795a1373241e02909128d8990c1fc1902d161bce8ef08f7d6f36f32e",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/exports.map",
+      "sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "history_source_sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/include/hagrid.h",
+      "sha256": "13a6b2f0628911108b343702b29b06309e6f26cabd3d60e5b942afda3f57cbec",
+      "history_source_sha256": "13a6b2f0628911108b343702b29b06309e6f26cabd3d60e5b942afda3f57cbec",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/include/hand_core.h",
+      "sha256": "cff3fa73bff2d6c868bac5d52d37ee4b622917cd24ee4e0cd852ace2eb886ae0",
+      "history_source_sha256": "cff3fa73bff2d6c868bac5d52d37ee4b622917cd24ee4e0cd852ace2eb886ae0",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/MANUAL_IMPORT.txt",
+      "sha256": "eea6c352c0b605904014f850e60e94682eec2d6d307d0829716145bf9369484e",
+      "history_source_sha256": "6341fa02acd3d5b301f502b216d175ffdcf40887e044f51cc84ed039b6f7f089",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/package_hagrid.py",
+      "sha256": "14876589c1625688f4d8ba18cf33e24c96c4a409db28c55620628341f1f2db9d",
+      "history_source_sha256": "152f4e327f2adcdd843f19512d24fa7eb1cfa394579f20a80834afb5ebb1c4f2",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/src/alg.cpp",
+      "sha256": "23b6ec56db2ea3a1b38d543aba1cc5ce3927a4546503d111dbbf9629a8f0972a",
+      "history_source_sha256": "23b6ec56db2ea3a1b38d543aba1cc5ce3927a4546503d111dbbf9629a8f0972a",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/src/hagrid.cpp",
+      "sha256": "b963fd757e980e246e383e0a05ab2d61759981cea246c8a9f7e3656e9cca943f",
+      "history_source_sha256": "b963fd757e980e246e383e0a05ab2d61759981cea246c8a9f7e3656e9cca943f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/src/hand_core.cpp",
+      "sha256": "c73b2cc008ab715e8be77cf80be54586ef81afe334184a7a10795fbf4343a676",
+      "history_source_sha256": "c73b2cc008ab715e8be77cf80be54586ef81afe334184a7a10795fbf4343a676",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/src/raw_depth.cpp",
+      "sha256": "b3b9f96666179c8125013c6b14265591cc5236200944a0c267d0644a85f9f850",
+      "history_source_sha256": "b3b9f96666179c8125013c6b14265591cc5236200944a0c267d0644a85f9f850",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/abi_probe.cpp",
+      "sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "history_source_sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/cross_core_probe.cpp",
+      "sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "history_source_sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/hagrid_bridge.cpp",
+      "sha256": "cfb6b60c0fff0a1a261cf9cb479c57f77f236d111ea9bf090e25566ce3821b4c",
+      "history_source_sha256": "cfb6b60c0fff0a1a261cf9cb479c57f77f236d111ea9bf090e25566ce3821b4c",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/hagrid_probe.cpp",
+      "sha256": "7fb18e35d013e41e51e8ba8ae529577192b1c81ea8cf29b02c6d81757bc1d341",
+      "history_source_sha256": "7fb18e35d013e41e51e8ba8ae529577192b1c81ea8cf29b02c6d81757bc1d341",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/raw_core_probe.cpp",
+      "sha256": "78ed0835ab9d0c3fc166f16c74526dde0c3b1bb7ec52845d9553ee27dbac1dd6",
+      "history_source_sha256": "78ed0835ab9d0c3fc166f16c74526dde0c3b1bb7ec52845d9553ee27dbac1dd6",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/replay_bridge.cpp",
+      "sha256": "2935b0bb90995919b936144d5e15c50145f2888899bd0f3f7208bbed2742df51",
+      "history_source_sha256": "2935b0bb90995919b936144d5e15c50145f2888899bd0f3f7208bbed2742df51",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/rknn_mock.cpp",
+      "sha256": "897e0ba68ae8a7e3acda446f0f8a626078e19e00cc31898b344434b4f20b7508",
+      "history_source_sha256": "897e0ba68ae8a7e3acda446f0f8a626078e19e00cc31898b344434b4f20b7508",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/validate_hagrid.py",
+      "sha256": "640a62e61019d8c471b9782993d547bac39eba0bde9c7e2958ea39718a43ffe0",
+      "history_source_sha256": "640a62e61019d8c471b9782993d547bac39eba0bde9c7e2958ea39718a43ffe0",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/validate_native.py",
+      "sha256": "d312f0c51bc082fa08f187508ec1049962ae6d8f1ffe3c86c2e88a15a6eede7b",
+      "history_source_sha256": "d312f0c51bc082fa08f187508ec1049962ae6d8f1ffe3c86c2e88a15a6eede7b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/tests/validate_raw.py",
+      "sha256": "6e66a9dc1f4d6f2241147465d9408f7d28248860f9784f2ff7079c8f747a06f5",
+      "history_source_sha256": "6e66a9dc1f4d6f2241147465d9408f7d28248860f9784f2ff7079c8f747a06f5",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/build_arm.sh",
+      "sha256": "ac75cdeded280e3d88e9fd11313cb7e86d4f390230f4b8f9d7c21567e1152b3f",
+      "history_source_sha256": "ac75cdeded280e3d88e9fd11313cb7e86d4f390230f4b8f9d7c21567e1152b3f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/CMakeLists.txt",
+      "sha256": "07ebe68e795a1373241e02909128d8990c1fc1902d161bce8ef08f7d6f36f32e",
+      "history_source_sha256": "07ebe68e795a1373241e02909128d8990c1fc1902d161bce8ef08f7d6f36f32e",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/exports.map",
+      "sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "history_source_sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/include/hagrid.h",
+      "sha256": "1f5ba1546707c91d74809e3a78b716362875cfa27559ab3e2ded08e955585d9f",
+      "history_source_sha256": "1f5ba1546707c91d74809e3a78b716362875cfa27559ab3e2ded08e955585d9f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/include/hand_core.h",
+      "sha256": "9ca386d0824525e4d71caed8867bf84d09930fb61b87253c22f110215aa05257",
+      "history_source_sha256": "9ca386d0824525e4d71caed8867bf84d09930fb61b87253c22f110215aa05257",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/MANUAL_IMPORT.txt",
+      "sha256": "c69fbf117dada4177c958f48fa33cbaf73c5d4a9f588d9ff3b699303ff62948a",
+      "history_source_sha256": "d0ef2125823d03756a1645b0beb64c947ab289c16c128bcafac97c8e89142f6c",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/package_hagrid.py",
+      "sha256": "5728b84411358fc5e73441cf5183bd685052348f2ffbe80f6a4406ecebc7cdc3",
+      "history_source_sha256": "24550a90c76b3c655836f91dec85179063d5e039875261956417a27fa3277226",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/src/alg.cpp",
+      "sha256": "cc7b5c62a659a6b4de3593a7c01662a4f67cf36d6ead58b8c467dd06925d646a",
+      "history_source_sha256": "cc7b5c62a659a6b4de3593a7c01662a4f67cf36d6ead58b8c467dd06925d646a",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/src/hagrid.cpp",
+      "sha256": "fda02e9fb22dadc5c3fa39645cb4b08ebaa8c4d17cad497309994438fff9ba48",
+      "history_source_sha256": "fda02e9fb22dadc5c3fa39645cb4b08ebaa8c4d17cad497309994438fff9ba48",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/src/hand_core.cpp",
+      "sha256": "1c2a907b5db062375a7c4f0ec8f15396ab4679af634af002a77c4337f9b4c20c",
+      "history_source_sha256": "1c2a907b5db062375a7c4f0ec8f15396ab4679af634af002a77c4337f9b4c20c",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/src/raw_depth.cpp",
+      "sha256": "e7c7389167bdc261b60a08350c4ff54b73ec3597976f559ab62312f9f5b745bb",
+      "history_source_sha256": "e7c7389167bdc261b60a08350c4ff54b73ec3597976f559ab62312f9f5b745bb",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/abi_probe.cpp",
+      "sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "history_source_sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/cross_core_probe.cpp",
+      "sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "history_source_sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/hagrid_bridge.cpp",
+      "sha256": "dab79034d61f0d91bc2545ef3842158e3294b1b835d5803a44bb0871b8aec9fd",
+      "history_source_sha256": "dab79034d61f0d91bc2545ef3842158e3294b1b835d5803a44bb0871b8aec9fd",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/hagrid_probe.cpp",
+      "sha256": "f39a47edd30fab9aec6246545062adcbe748b181d530d12de72dab90fb2429c8",
+      "history_source_sha256": "f39a47edd30fab9aec6246545062adcbe748b181d530d12de72dab90fb2429c8",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/raw_core_probe.cpp",
+      "sha256": "78ed0835ab9d0c3fc166f16c74526dde0c3b1bb7ec52845d9553ee27dbac1dd6",
+      "history_source_sha256": "78ed0835ab9d0c3fc166f16c74526dde0c3b1bb7ec52845d9553ee27dbac1dd6",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/replay_bridge.cpp",
+      "sha256": "3bafe7932295775a957b3297bc6016afef6f73c384eada891dd6b7d27a46748f",
+      "history_source_sha256": "3bafe7932295775a957b3297bc6016afef6f73c384eada891dd6b7d27a46748f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/rknn_mock.cpp",
+      "sha256": "3e6f88e403fd7431b155c8e880ae0fea67115614fe407a030be5da21bb718cd1",
+      "history_source_sha256": "3e6f88e403fd7431b155c8e880ae0fea67115614fe407a030be5da21bb718cd1",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/validate_hagrid.py",
+      "sha256": "559320822a58cd88aac518e42b01eea2c2c7ff81ad2bfa9ba8da9688938a415f",
+      "history_source_sha256": "559320822a58cd88aac518e42b01eea2c2c7ff81ad2bfa9ba8da9688938a415f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/validate_native.py",
+      "sha256": "d312f0c51bc082fa08f187508ec1049962ae6d8f1ffe3c86c2e88a15a6eede7b",
+      "history_source_sha256": "d312f0c51bc082fa08f187508ec1049962ae6d8f1ffe3c86c2e88a15a6eede7b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/validate_raw.py",
+      "sha256": "6e66a9dc1f4d6f2241147465d9408f7d28248860f9784f2ff7079c8f747a06f5",
+      "history_source_sha256": "6e66a9dc1f4d6f2241147465d9408f7d28248860f9784f2ff7079c8f747a06f5",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/tests/validate_sampled_depth.py",
+      "sha256": "9033e758f7e2dfce2f068a23eb3d2a3003893b9dcf1716d9845c19a6ba4674e4",
+      "history_source_sha256": "9033e758f7e2dfce2f068a23eb3d2a3003893b9dcf1716d9845c19a6ba4674e4",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/build_and_verify.sh",
+      "sha256": "096a86bd3cd3ad6d8129b59a13189c41355189c08c11d8fbf0ea804084a636b2",
+      "history_source_sha256": "096a86bd3cd3ad6d8129b59a13189c41355189c08c11d8fbf0ea804084a636b2",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/CMakeLists.txt",
+      "sha256": "6eaab1e07f4c660616b327f1006b4e6453bdd493f98d629a52275aa878a81966",
+      "history_source_sha256": "6eaab1e07f4c660616b327f1006b4e6453bdd493f98d629a52275aa878a81966",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/exports.map",
+      "sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "history_source_sha256": "c0d552c84a5f4fa88eb7787c887f6fe82d981ddbf7988721eacb68a2464c916b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/include/hand_core.h",
+      "sha256": "4b55a6d207c0cfff2f3b274e4f18baf5184e9fdf6d617840caab05ae926b22c8",
+      "history_source_sha256": "4b55a6d207c0cfff2f3b274e4f18baf5184e9fdf6d617840caab05ae926b22c8",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/MANUAL_IMPORT.txt",
+      "sha256": "936104c968fd588899a410ec2fb93e247dbc3251e5dad139e101dfe97b3c506c",
+      "history_source_sha256": "c4dc287c8a5b69515a46d21e0cae108be11c61e1f818941ecd2e7eb115bd6798",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/package_native.py",
+      "sha256": "328f94dbe8a299c8b5472ae9fb4b076acf90992c931fea17007993fc9ae85a5e",
+      "history_source_sha256": "32567125200d4bb4fad662d52cb91c3ad4bd027a783f4ba55ff8874f976f8546",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/prepare_stage.py",
+      "sha256": "9a407f2b5b588766b83e89a6da0d912b0184251162074b48200b5335e9c670ab",
+      "history_source_sha256": "4ae666efbc37321204907464feaab6ec4d37bc7eac7732e4c41ea2e6cce6895c",
+      "redacted": true
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/src/alg.cpp",
+      "sha256": "fca8feb712e034f0c23ddc8997986561e5a63bbe5bfeb3e2f823f428fa2877df",
+      "history_source_sha256": "fca8feb712e034f0c23ddc8997986561e5a63bbe5bfeb3e2f823f428fa2877df",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/src/hand_core.cpp",
+      "sha256": "e1cbe0f10cb1f8bc217933380beddc6d8f974a897dd769d6224c2e3d1bc0bf80",
+      "history_source_sha256": "e1cbe0f10cb1f8bc217933380beddc6d8f974a897dd769d6224c2e3d1bc0bf80",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/src/raw_depth.cpp",
+      "sha256": "b3b9f96666179c8125013c6b14265591cc5236200944a0c267d0644a85f9f850",
+      "history_source_sha256": "b3b9f96666179c8125013c6b14265591cc5236200944a0c267d0644a85f9f850",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/tests/abi_probe.cpp",
+      "sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "history_source_sha256": "85f7b344fd4f0ca4b9eb6d5ce965dda2b67e70319da335b48b41f6bbf86ab34f",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/tests/cross_core_probe.cpp",
+      "sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "history_source_sha256": "b44ed0428b0af231777955bccd30ece01ec774e1bc7869a14bf8ec0f6d09b27a",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/tests/raw_core_probe.cpp",
+      "sha256": "78ed0835ab9d0c3fc166f16c74526dde0c3b1bb7ec52845d9553ee27dbac1dd6",
+      "history_source_sha256": "78ed0835ab9d0c3fc166f16c74526dde0c3b1bb7ec52845d9553ee27dbac1dd6",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/tests/replay_bridge.cpp",
+      "sha256": "2935b0bb90995919b936144d5e15c50145f2888899bd0f3f7208bbed2742df51",
+      "history_source_sha256": "2935b0bb90995919b936144d5e15c50145f2888899bd0f3f7208bbed2742df51",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/tests/rknn_mock.cpp",
+      "sha256": "e424f65ba18311eca3553ce1c454ff7fa1e97cc969af8fc777f5429f03bfe7c7",
+      "history_source_sha256": "e424f65ba18311eca3553ce1c454ff7fa1e97cc969af8fc777f5429f03bfe7c7",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/tests/validate_native.py",
+      "sha256": "d312f0c51bc082fa08f187508ec1049962ae6d8f1ffe3c86c2e88a15a6eede7b",
+      "history_source_sha256": "d312f0c51bc082fa08f187508ec1049962ae6d8f1ffe3c86c2e88a15a6eede7b",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/tests/validate_raw.py",
+      "sha256": "6e66a9dc1f4d6f2241147465d9408f7d28248860f9784f2ff7079c8f747a06f5",
+      "history_source_sha256": "6e66a9dc1f4d6f2241147465d9408f7d28248860f9784f2ff7079c8f747a06f5",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/prepare_replay.py",
+      "sha256": "2322f977ebc7e5cd931944077f69ea1f847dc969ed0543fb5d77dc04c50a4331",
+      "history_source_sha256": "2322f977ebc7e5cd931944077f69ea1f847dc969ed0543fb5d77dc04c50a4331",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/README.txt",
+      "sha256": "31c462c474bedc3a33b048a195d60e1964c169ca9a8469ca393087c39cf6850c",
+      "history_source_sha256": "31c462c474bedc3a33b048a195d60e1964c169ca9a8469ca393087c39cf6850c",
+      "redacted": false
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/include/alg_api.h",
+      "sha256": "904783e230fc824010751771a8c97ce21415bec470ffcd77b91aa05826d058c2",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native/include/alg_define.h",
+      "sha256": "0bd3893ce47f24f83fe5ac013bfbdb67785f46ce59c4cfd61fb391dfcebd3375",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/include/alg_api.h",
+      "sha256": "904783e230fc824010751771a8c97ce21415bec470ffcd77b91aa05826d058c2",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_lowmem/include/alg_define.h",
+      "sha256": "0bd3893ce47f24f83fe5ac013bfbdb67785f46ce59c4cfd61fb391dfcebd3375",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/include/alg_api.h",
+      "sha256": "904783e230fc824010751771a8c97ce21415bec470ffcd77b91aa05826d058c2",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid/include/alg_define.h",
+      "sha256": "0bd3893ce47f24f83fe5ac013bfbdb67785f46ce59c4cfd61fb391dfcebd3375",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/include/alg_api.h",
+      "sha256": "904783e230fc824010751771a8c97ce21415bec470ffcd77b91aa05826d058c2",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    },
+    {
+      "path": "camera_backend/edge_hand_ainn_26081/native_hagrid_binary/include/alg_define.h",
+      "sha256": "0bd3893ce47f24f83fe5ac013bfbdb67785f46ce59c4cfd61fb391dfcebd3375",
+      "origin": "AINN SDK 26.08.1, BSD 3-Clause"
+    }
+  ],
+  "packages": [
+    {
+      "file": "ainn_HagridBinaryXYZ_NoID_Fast2_Ver26_8_1_nyx310.tar",
+      "bytes": 31989760,
+      "sha256": "e07d62c644a9cfdf9382ca6dda64f60d5e1f3eaca576a1e23bfd6dadb5c8b990",
+      "members": [
+        {
+          "path": "bin/ai_common_app",
+          "bytes": 5999120,
+          "sha256": "af2ad65765065aa86c3e143035a0345f7dab315f4724fb03f81a0c0345fb5471",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "config/classes.json",
+          "bytes": 33,
+          "sha256": "fab1e3e112853a2a1609d2c4ae30c4c9556ab3099c42c99f932d5c0d8e0eaa5e",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/config.json",
+          "bytes": 165,
+          "sha256": "7401ee6934b4d85a8283af12620ddd7c7ac69e0fed833bf738df3405bb20b753",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/depth_rays.bin",
+          "bytes": 2457600,
+          "sha256": "a43b87d0c65e50a67c572a21d9a6610d502df2bb8118e936a9a4b3bda25c14ce",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/hand.json",
+          "bytes": 556,
+          "sha256": "ad83594829fc4165ac4d7d90a6e7a026377facdc1a944d5ec37c04735f58d725",
+          "mode": "0o644"
+        },
+        {
+          "path": "lib/libalg.so",
+          "bytes": 4937328,
+          "sha256": "4df85714c5a5279e8dc58d028e63ba50aa42aa593cfa701b0f3986df42300661",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "lib/librknnrt.so",
+          "bytes": 7726232,
+          "sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "licenses/HaGRID_LICENSE_en_us.pdf",
+          "bytes": 157632,
+          "sha256": "14f4845e9c8d3de875cbac4139491da368ab1040a7f565e02894477279134d22",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_Zoo_Apache_2.0.txt",
+          "bytes": 11558,
+          "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/SoftFloat-COPYING.txt",
+          "bytes": 1732,
+          "sha256": "0c5b08365136da52639d777f1ebfc03988b0169d80655c90c59f1b3fa3e526a2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-LICENSE",
+          "bytes": 2744,
+          "sha256": "edf9f4257cc33a1f396f9b062ca4a01dca7c79747c7d85b8947e603e5166760e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-README",
+          "bytes": 1026,
+          "sha256": "3aa9363b3b53c89cb46fda980eeb84b8a7510a4ccf70d84b7b7fc7fb912fe4c3",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-copyright",
+          "bytes": 3042,
+          "sha256": "86c11bd7b94d24d6c372bd95f8d8998b8a69c7d82a91dd0247878b28223feabe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-LICENSE.md",
+          "bytes": 5343,
+          "sha256": "5c08657eda60b7946a913ee22ac73603335a468a6aa95204506a1586a8d677ee",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.ijg",
+          "bytes": 13668,
+          "sha256": "53a3e3c299e08856964f4c5986e242c3695837b73c64625092f70c774e8af5d2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.md",
+          "bytes": 16129,
+          "sha256": "21912b8a987c9205aa0addbdd458f957c4bff6435fac00529da72798b6b1ec13",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-LICENSE",
+          "bytes": 4985,
+          "sha256": "f9850940c6606003eea9c8864b2a3f177eb5c963614aba5a3c5a24c47dd043ab",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-README",
+          "bytes": 11644,
+          "sha256": "7c603f19d8b799f9464c48a607414a3151d5490dd4db302b865939cef4ba048a",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-opencv-libpng.patch",
+          "bytes": 1492,
+          "sha256": "ceabafba9e443ed964b8dc77b51e8cc014601f8a57a00d99b5ba9480ea340e4f",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libtiff-COPYRIGHT",
+          "bytes": 1146,
+          "sha256": "fbd6fed7938541d2c809c0826225fc85e551fdbfa8732b10f0c87e0847acafd7",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/opencl-headers-LICENSE.txt",
+          "bytes": 1309,
+          "sha256": "cfaceadff07c2c9458283079cd0166872aa2d93d5c480f1f417be321aa7e0f4d",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.ilmbase",
+          "bytes": 336,
+          "sha256": "3d01213ed07453794228b95e41fd5897bad65e1342ebfdefbe52311d6e1adcb4",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.openexr",
+          "bytes": 986,
+          "sha256": "b13858be90b4046eeb32dc7ca9779c5c32cf4c54e97cdd4239fb70e2ee651f9e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-LICENSE",
+          "bytes": 1697,
+          "sha256": "14eba5f05238f57c77e94f0ebd29a0b3736ba0456ff990cda16e21b6903ac453",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-fix_msvc2013_errors.patch",
+          "bytes": 2321,
+          "sha256": "2c754ac21a017811f608507e8f1497c42bb4cd40a078a4df2cfa7c0de87cbb73",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-LICENSE",
+          "bytes": 2133,
+          "sha256": "af67c58de2e18677a0b8cb5fffbe2232aabb8eb2930e8cd684769cef3d74a262",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-README.md",
+          "bytes": 124,
+          "sha256": "236ba7549320a06703175c36f95d0105e72bf780d7ca66c4f1347f28213fd9b9",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/quirc-LICENSE",
+          "bytes": 790,
+          "sha256": "f64a0d2030dd3bb501f303eb66097ed92cd0c63f824e515b1116dafbce5346fe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/zlib-README",
+          "bytes": 5187,
+          "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/Ultralytics_AGPL_LICENSE.txt",
+          "bytes": 34523,
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/hagrid.rknn",
+          "bytes": 5862851,
+          "sha256": "f571852bda8c195aa8d576bb1fd6993978b53a5721ae602e525ef90983094325",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/handpose.rknn",
+          "bytes": 2377189,
+          "sha256": "c15d4e9ef29c3002414399ca7a221c5989f3961148034b9f5c9633c04b2ee42e",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/palm.rknn",
+          "bytes": 2317092,
+          "sha256": "127f3cf423f8473cf0d989ed093a2e449e25585f3a350a92634743995231a3bf",
+          "mode": "0o644"
+        }
+      ]
+    },
+    {
+      "file": "ainn_HagridPalmXYZ_Ver26_8_1_nyx310.tar",
+      "bytes": 32102400,
+      "sha256": "6e9c81266de3b0c4c48a32b783f18bf3a49625313c896db3278199b711fbbcac",
+      "members": [
+        {
+          "path": "bin/ai_common_app",
+          "bytes": 5999120,
+          "sha256": "af2ad65765065aa86c3e143035a0345f7dab315f4724fb03f81a0c0345fb5471",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "config/classes.json",
+          "bytes": 648,
+          "sha256": "c73f72b231e1b59db004b07ef972b3ce8c07c8584d6b536d0fa27a6dba08d0af",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/config.json",
+          "bytes": 165,
+          "sha256": "7401ee6934b4d85a8283af12620ddd7c7ac69e0fed833bf738df3405bb20b753",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/depth_rays.bin",
+          "bytes": 2457600,
+          "sha256": "a43b87d0c65e50a67c572a21d9a6610d502df2bb8118e936a9a4b3bda25c14ce",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/hand.json",
+          "bytes": 556,
+          "sha256": "ad83594829fc4165ac4d7d90a6e7a026377facdc1a944d5ec37c04735f58d725",
+          "mode": "0o644"
+        },
+        {
+          "path": "lib/libalg.so",
+          "bytes": 4938032,
+          "sha256": "d49f979b2dcf9f3ce725540c48af3b0ba876c0a14b1f033ede55c6c6a2200393",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "lib/librknnrt.so",
+          "bytes": 7726232,
+          "sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "licenses/HaGRID_LICENSE_en_us.pdf",
+          "bytes": 157632,
+          "sha256": "14f4845e9c8d3de875cbac4139491da368ab1040a7f565e02894477279134d22",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_Zoo_Apache_2.0.txt",
+          "bytes": 11558,
+          "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/SoftFloat-COPYING.txt",
+          "bytes": 1732,
+          "sha256": "0c5b08365136da52639d777f1ebfc03988b0169d80655c90c59f1b3fa3e526a2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-LICENSE",
+          "bytes": 2744,
+          "sha256": "edf9f4257cc33a1f396f9b062ca4a01dca7c79747c7d85b8947e603e5166760e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-README",
+          "bytes": 1026,
+          "sha256": "3aa9363b3b53c89cb46fda980eeb84b8a7510a4ccf70d84b7b7fc7fb912fe4c3",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-copyright",
+          "bytes": 3042,
+          "sha256": "86c11bd7b94d24d6c372bd95f8d8998b8a69c7d82a91dd0247878b28223feabe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-LICENSE.md",
+          "bytes": 5343,
+          "sha256": "5c08657eda60b7946a913ee22ac73603335a468a6aa95204506a1586a8d677ee",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.ijg",
+          "bytes": 13668,
+          "sha256": "53a3e3c299e08856964f4c5986e242c3695837b73c64625092f70c774e8af5d2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.md",
+          "bytes": 16129,
+          "sha256": "21912b8a987c9205aa0addbdd458f957c4bff6435fac00529da72798b6b1ec13",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-LICENSE",
+          "bytes": 4985,
+          "sha256": "f9850940c6606003eea9c8864b2a3f177eb5c963614aba5a3c5a24c47dd043ab",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-README",
+          "bytes": 11644,
+          "sha256": "7c603f19d8b799f9464c48a607414a3151d5490dd4db302b865939cef4ba048a",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-opencv-libpng.patch",
+          "bytes": 1492,
+          "sha256": "ceabafba9e443ed964b8dc77b51e8cc014601f8a57a00d99b5ba9480ea340e4f",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libtiff-COPYRIGHT",
+          "bytes": 1146,
+          "sha256": "fbd6fed7938541d2c809c0826225fc85e551fdbfa8732b10f0c87e0847acafd7",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/opencl-headers-LICENSE.txt",
+          "bytes": 1309,
+          "sha256": "cfaceadff07c2c9458283079cd0166872aa2d93d5c480f1f417be321aa7e0f4d",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.ilmbase",
+          "bytes": 336,
+          "sha256": "3d01213ed07453794228b95e41fd5897bad65e1342ebfdefbe52311d6e1adcb4",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.openexr",
+          "bytes": 986,
+          "sha256": "b13858be90b4046eeb32dc7ca9779c5c32cf4c54e97cdd4239fb70e2ee651f9e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-LICENSE",
+          "bytes": 1697,
+          "sha256": "14eba5f05238f57c77e94f0ebd29a0b3736ba0456ff990cda16e21b6903ac453",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-fix_msvc2013_errors.patch",
+          "bytes": 2321,
+          "sha256": "2c754ac21a017811f608507e8f1497c42bb4cd40a078a4df2cfa7c0de87cbb73",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-LICENSE",
+          "bytes": 2133,
+          "sha256": "af67c58de2e18677a0b8cb5fffbe2232aabb8eb2930e8cd684769cef3d74a262",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-README.md",
+          "bytes": 124,
+          "sha256": "236ba7549320a06703175c36f95d0105e72bf780d7ca66c4f1347f28213fd9b9",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/quirc-LICENSE",
+          "bytes": 790,
+          "sha256": "f64a0d2030dd3bb501f303eb66097ed92cd0c63f824e515b1116dafbce5346fe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/zlib-README",
+          "bytes": 5187,
+          "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/Ultralytics_AGPL_LICENSE.txt",
+          "bytes": 34523,
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/hagrid.rknn",
+          "bytes": 5965379,
+          "sha256": "1b433f79ab992e6a843ef38b645c370f90fc21e6a5f409c60bb8291e1df1cae9",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/handpose.rknn",
+          "bytes": 2377189,
+          "sha256": "c15d4e9ef29c3002414399ca7a221c5989f3961148034b9f5c9633c04b2ee42e",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/palm.rknn",
+          "bytes": 2317092,
+          "sha256": "127f3cf423f8473cf0d989ed093a2e449e25585f3a350a92634743995231a3bf",
+          "mode": "0o644"
+        }
+      ]
+    },
+    {
+      "file": "ainn_PalmPoseGraspXYZ_LowMem2_Ver26_8_1_nyx310.tar",
+      "bytes": 25907200,
+      "sha256": "1e7da19d7215a887e95768c9def8351d7dc81c80a86fe3ab4d58ccd91a2e97cc",
+      "members": [
+        {
+          "path": "bin/ai_common_app",
+          "bytes": 5999120,
+          "sha256": "af2ad65765065aa86c3e143035a0345f7dab315f4724fb03f81a0c0345fb5471",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "config/config.json",
+          "bytes": 164,
+          "sha256": "39a0ebc7d2c8063238deae83130bbdf377361d8108b05a6feae8d5a2b8763ad0",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/depth_rays.bin",
+          "bytes": 2457600,
+          "sha256": "a43b87d0c65e50a67c572a21d9a6610d502df2bb8118e936a9a4b3bda25c14ce",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/hand.json",
+          "bytes": 556,
+          "sha256": "ad83594829fc4165ac4d7d90a6e7a026377facdc1a944d5ec37c04735f58d725",
+          "mode": "0o644"
+        },
+        {
+          "path": "lib/libalg.so",
+          "bytes": 4912888,
+          "sha256": "c72412c5a3a9f3550ec3d4ec200a60ad28a27470a1f3491dd234bf75c322b223",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "lib/librknnrt.so",
+          "bytes": 7726232,
+          "sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "licenses/OpenCV_Zoo_Apache_2.0.txt",
+          "bytes": 11558,
+          "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/SoftFloat-COPYING.txt",
+          "bytes": 1732,
+          "sha256": "0c5b08365136da52639d777f1ebfc03988b0169d80655c90c59f1b3fa3e526a2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-LICENSE",
+          "bytes": 2744,
+          "sha256": "edf9f4257cc33a1f396f9b062ca4a01dca7c79747c7d85b8947e603e5166760e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-README",
+          "bytes": 1026,
+          "sha256": "3aa9363b3b53c89cb46fda980eeb84b8a7510a4ccf70d84b7b7fc7fb912fe4c3",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-copyright",
+          "bytes": 3042,
+          "sha256": "86c11bd7b94d24d6c372bd95f8d8998b8a69c7d82a91dd0247878b28223feabe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-LICENSE.md",
+          "bytes": 5343,
+          "sha256": "5c08657eda60b7946a913ee22ac73603335a468a6aa95204506a1586a8d677ee",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.ijg",
+          "bytes": 13668,
+          "sha256": "53a3e3c299e08856964f4c5986e242c3695837b73c64625092f70c774e8af5d2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.md",
+          "bytes": 16129,
+          "sha256": "21912b8a987c9205aa0addbdd458f957c4bff6435fac00529da72798b6b1ec13",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-LICENSE",
+          "bytes": 4985,
+          "sha256": "f9850940c6606003eea9c8864b2a3f177eb5c963614aba5a3c5a24c47dd043ab",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-README",
+          "bytes": 11644,
+          "sha256": "7c603f19d8b799f9464c48a607414a3151d5490dd4db302b865939cef4ba048a",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-opencv-libpng.patch",
+          "bytes": 1492,
+          "sha256": "ceabafba9e443ed964b8dc77b51e8cc014601f8a57a00d99b5ba9480ea340e4f",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libtiff-COPYRIGHT",
+          "bytes": 1146,
+          "sha256": "fbd6fed7938541d2c809c0826225fc85e551fdbfa8732b10f0c87e0847acafd7",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/opencl-headers-LICENSE.txt",
+          "bytes": 1309,
+          "sha256": "cfaceadff07c2c9458283079cd0166872aa2d93d5c480f1f417be321aa7e0f4d",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.ilmbase",
+          "bytes": 336,
+          "sha256": "3d01213ed07453794228b95e41fd5897bad65e1342ebfdefbe52311d6e1adcb4",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.openexr",
+          "bytes": 986,
+          "sha256": "b13858be90b4046eeb32dc7ca9779c5c32cf4c54e97cdd4239fb70e2ee651f9e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-LICENSE",
+          "bytes": 1697,
+          "sha256": "14eba5f05238f57c77e94f0ebd29a0b3736ba0456ff990cda16e21b6903ac453",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-fix_msvc2013_errors.patch",
+          "bytes": 2321,
+          "sha256": "2c754ac21a017811f608507e8f1497c42bb4cd40a078a4df2cfa7c0de87cbb73",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-LICENSE",
+          "bytes": 2133,
+          "sha256": "af67c58de2e18677a0b8cb5fffbe2232aabb8eb2930e8cd684769cef3d74a262",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-README.md",
+          "bytes": 124,
+          "sha256": "236ba7549320a06703175c36f95d0105e72bf780d7ca66c4f1347f28213fd9b9",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/quirc-LICENSE",
+          "bytes": 790,
+          "sha256": "f64a0d2030dd3bb501f303eb66097ed92cd0c63f824e515b1116dafbce5346fe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/zlib-README",
+          "bytes": 5187,
+          "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/handpose.rknn",
+          "bytes": 2377189,
+          "sha256": "c15d4e9ef29c3002414399ca7a221c5989f3961148034b9f5c9633c04b2ee42e",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/palm.rknn",
+          "bytes": 2317092,
+          "sha256": "127f3cf423f8473cf0d989ed093a2e449e25585f3a350a92634743995231a3bf",
+          "mode": "0o644"
+        }
+      ]
+    },
+    {
+      "file": "ainn_PalmPoseGraspXYZ_Ver26_8_1_nyx310.tar",
+      "bytes": 23347200,
+      "sha256": "b0f5bc5dc10f7ac70fdd0d2e7bd55b6e39aa7dade1eea5b53bd0883b341fa4ba",
+      "members": [
+        {
+          "path": "bin/ai_common_app",
+          "bytes": 5999120,
+          "sha256": "af2ad65765065aa86c3e143035a0345f7dab315f4724fb03f81a0c0345fb5471",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "config/config.json",
+          "bytes": 148,
+          "sha256": "a690d99081ddb06e3e3a1ac884db844c9148a6be8328d0b0b74f7f80fda94a11",
+          "mode": "0o644"
+        },
+        {
+          "path": "config/hand.json",
+          "bytes": 407,
+          "sha256": "cbee8c97a23368acaf7676702015b997301c46b30de887eda82d6292ef3bfe63",
+          "mode": "0o644"
+        },
+        {
+          "path": "lib/libalg.so",
+          "bytes": 4810960,
+          "sha256": "65f71e8f4774d105d072424f1ad3c721ca73bf767b722c0109e10e34ebac9e74",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "lib/librknnrt.so",
+          "bytes": 7726232,
+          "sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "mode": "0o755",
+          "elf_machine": 183
+        },
+        {
+          "path": "licenses/OpenCV_Zoo_Apache_2.0.txt",
+          "bytes": 11558,
+          "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/SoftFloat-COPYING.txt",
+          "bytes": 1732,
+          "sha256": "0c5b08365136da52639d777f1ebfc03988b0169d80655c90c59f1b3fa3e526a2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-LICENSE",
+          "bytes": 2744,
+          "sha256": "edf9f4257cc33a1f396f9b062ca4a01dca7c79747c7d85b8947e603e5166760e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-README",
+          "bytes": 1026,
+          "sha256": "3aa9363b3b53c89cb46fda980eeb84b8a7510a4ccf70d84b7b7fc7fb912fe4c3",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/jasper-copyright",
+          "bytes": 3042,
+          "sha256": "86c11bd7b94d24d6c372bd95f8d8998b8a69c7d82a91dd0247878b28223feabe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-LICENSE.md",
+          "bytes": 5343,
+          "sha256": "5c08657eda60b7946a913ee22ac73603335a468a6aa95204506a1586a8d677ee",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.ijg",
+          "bytes": 13668,
+          "sha256": "53a3e3c299e08856964f4c5986e242c3695837b73c64625092f70c774e8af5d2",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libjpeg-turbo-README.md",
+          "bytes": 16129,
+          "sha256": "21912b8a987c9205aa0addbdd458f957c4bff6435fac00529da72798b6b1ec13",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-LICENSE",
+          "bytes": 4985,
+          "sha256": "f9850940c6606003eea9c8864b2a3f177eb5c963614aba5a3c5a24c47dd043ab",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-README",
+          "bytes": 11644,
+          "sha256": "7c603f19d8b799f9464c48a607414a3151d5490dd4db302b865939cef4ba048a",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libpng-opencv-libpng.patch",
+          "bytes": 1492,
+          "sha256": "ceabafba9e443ed964b8dc77b51e8cc014601f8a57a00d99b5ba9480ea340e4f",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/libtiff-COPYRIGHT",
+          "bytes": 1146,
+          "sha256": "fbd6fed7938541d2c809c0826225fc85e551fdbfa8732b10f0c87e0847acafd7",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/opencl-headers-LICENSE.txt",
+          "bytes": 1309,
+          "sha256": "cfaceadff07c2c9458283079cd0166872aa2d93d5c480f1f417be321aa7e0f4d",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.ilmbase",
+          "bytes": 336,
+          "sha256": "3d01213ed07453794228b95e41fd5897bad65e1342ebfdefbe52311d6e1adcb4",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-AUTHORS.openexr",
+          "bytes": 986,
+          "sha256": "b13858be90b4046eeb32dc7ca9779c5c32cf4c54e97cdd4239fb70e2ee651f9e",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-LICENSE",
+          "bytes": 1697,
+          "sha256": "14eba5f05238f57c77e94f0ebd29a0b3736ba0456ff990cda16e21b6903ac453",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/openexr-fix_msvc2013_errors.patch",
+          "bytes": 2321,
+          "sha256": "2c754ac21a017811f608507e8f1497c42bb4cd40a078a4df2cfa7c0de87cbb73",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-LICENSE",
+          "bytes": 2133,
+          "sha256": "af67c58de2e18677a0b8cb5fffbe2232aabb8eb2930e8cd684769cef3d74a262",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/protobuf-README.md",
+          "bytes": 124,
+          "sha256": "236ba7549320a06703175c36f95d0105e72bf780d7ca66c4f1347f28213fd9b9",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/quirc-LICENSE",
+          "bytes": 790,
+          "sha256": "f64a0d2030dd3bb501f303eb66097ed92cd0c63f824e515b1116dafbce5346fe",
+          "mode": "0o644"
+        },
+        {
+          "path": "licenses/OpenCV_dependencies/zlib-README",
+          "bytes": 5187,
+          "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/handpose.rknn",
+          "bytes": 2377189,
+          "sha256": "c15d4e9ef29c3002414399ca7a221c5989f3961148034b9f5c9633c04b2ee42e",
+          "mode": "0o644"
+        },
+        {
+          "path": "model/palm.rknn",
+          "bytes": 2317092,
+          "sha256": "127f3cf423f8473cf0d989ed093a2e449e25585f3a350a92634743995231a3bf",
+          "mode": "0o644"
+        }
+      ]
+    }
+  ]
+}

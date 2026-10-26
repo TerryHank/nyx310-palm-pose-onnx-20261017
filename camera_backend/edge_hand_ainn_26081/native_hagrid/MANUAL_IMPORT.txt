@@ -1,0 +1,55 @@
+NYX310 HaGRID 手势 + 手掌 XYZ 原生端侧包
+
+文件：ainn_HagridPalmXYZ_Ver26_8_1_nyx310.tar
+目标：NYX310 / RV1126B / AINN SDK26.08.1；厂家原版 ai_common_app 未改动。
+算法名：HagridPalmXYZ，版本：26.8.1-hagrid.1。
+模型：用户提供的 YOLOv10n_gestures.pt + OpenCV Zoo Palm Detection + Hand Pose。
+三个模型均已转为FP16 RKNN；手势分类、关键点、原始ToF配准、XYZ、跟踪和滤波均在libalg.so执行。
+包中是完整的厂家格式目录、app、libalg.so、librknnrt.so、3个模型、标定/配置和许可证。
+只需选择完整tar人工导入，不需编译、改配置、解包或重新压缩。
+
+导入与启动：
+1. 退出电脑端HaGRID实时窗口或按Q，使其释放相机。
+2. 用ScepterGUITool连接NYX310，选择导入算法，将完整tar导入。此操作会替换现有算法。
+   等待工具完成导入与相机自动重启，随后关闭ScepterGUITool。
+3. 本包PoweronCapture=false：由接收前端设置/确认RGB800x600、15FPS后启动采集。
+   ToF640x480保持原值；不通过本包改写厂家固件开机默认参数。
+4. 启动电脑上的相机结果接收前端：
+   & 'D:\Workspace\nyx310-yolov8-ainn-20260921\verification\run_nyx310_hagrid_camera.ps1'
+   此命令只读取相机RGB和AINN JSON，不运行本机模型、深度定位或分类。
+   原来的run_nyx310_hagrid_viewer.ps1仍是电脑端CUDA推理，勿混淆。
+5. 前端应读到HagridPalmXYZ / 26.8.1-hagrid.1，再显示类别、置信度、XYZ和右侧X-Z图。
+   无骨架显示；手/深度丢失时旧位置HOLD，valid=false。
+
+已有历史问题：原1600x1200配置曾触发内存耗尽并观察到相机重启。
+此包拒收非800x600的RGB，禁用主动开机采集；新增YOLO模型的真实NPU内存和FPS仍待导入实测。
+PoweronCapture=false不代表已经永久修改相机本身的初始化配置；其他程序仍可能开流。
+首次导入后若AINN接口返回-122，不要在1600x1200下反复启动；先读服务状态和日志。
+过去导入器曾将app的0755变成0644。包内app为0755；如再次发生，只恢复该文件执行权限：
+/userdata/algorithm_data/ai_common_app_install/bin/ai_common_app
+然后在800x600下启动既有服务；不要修改rgbd_video、固件或全局内存配置。
+
+模型/输出：
+保留34类原始HaGRID标签，包括grabbing、grip、fist、palm、no_gesture。
+类别编号以config/classes.json为准。state是经过3帧/120ms稳定处理的类别，
+class_id与state对应；raw_class_name是当前帧原始类别，confidence属于该原始类别。
+无新手检测时raw_class_name=null、confidence=0、valid=false，保留历史位置。
+no_gesture是模型已有类别，不强行改成抓取。
+示例：
+{"hands":[{"hand_id":1,"xyz_mm":[125,-60,800],"state":"grip","class_id":1,"raw_class_name":"grip","confidence_class_name":"grip","confidence":0.95,"valid":true}]}
+XYZ为RGB相机坐标：X右、Y下、Z前，单位mm；右侧图显示X与Z。
+手掌参考=(wrist_0+middle_mcp_9)/2；掌内区域深度中位数、MAD剔除离群点、时间滤波。
+没有关键点时只关联手ID，不用检测框中心深度冒充手掌固定位置。
+grabbing/grip仅是视觉手势类别，不能据此证明已抓牢物体。
+标定射线表对应相机<DEVICE_SERIAL>，请勿直接用于其他序列号。
+软件深度窗口50<Z<5000mm不改变传感器物理盲区。
+
+验证范围：
+已完成原权重加载/导出，ONNX与PyTorch对比、RV1126B FP16转换、RKNN CPU模拟器回放，
+C++解码/预处理、三模型完整API回放和ARM64 QEMU装载/核心执行、原生tar逐文件回读哈希检查。
+主机完整API测试使用ONNX Runtime替代NPU transport；深度场景注明使用合成数据。
+QEMU装载不初始化NPU。上述均不能代替导入后的相机内存、帧率、精度和长期稳定性验收。
+此次未上传、升级、重启相机，也未将本包当作已通过相机实测的版本。
+
+回退：保留先前LowMem2原包，必要时由你重新人工导入并按800x600启动。
+校验值和本地报告位于同目录NYX310_HAGRID_SHA256SUMS.txt、NYX310_HAGRID_VALIDATION.json。

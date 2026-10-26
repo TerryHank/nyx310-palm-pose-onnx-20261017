@@ -1,0 +1,51 @@
+NYX310 手部算法 LowMem2：人工导入和验收
+
+原生包：ainn_PalmPoseGraspXYZ_LowMem2_Ver26_8_1_nyx310.tar
+目标：NYX310 / rv1126b / AINN SDK 26.08.1。
+算法名保持 PalmPoseGraspXYZ，版本为 26.8.1-hand.2。
+
+修改内容：
+1. 算法输入由 RGB + 全幅对齐深度改为 RGB + 原始 ToF 深度。
+   配准、真实 XYZ、分类和滤波继续全部在相机算法库执行。
+2. 待处理 RGB 在入口缩到模型使用的 640 宽，最多保留当前帧和最新待处理帧。
+   1600x1200 RGB + 对齐深度的两帧存储原为 19,200,000 字节；
+   现在 RGB640x480 + ToF640x480 两帧为 3,072,000 字节。
+3. 内置厂家 SDK 读出的该相机射线表，2,457,600 字节；只对手掌 ROI 做深度投影，
+   不生成整幅 RGB 对齐深度图。表已与实际 SDK 点云换算核对。
+4. 两模型保持 FP16，无重新训练或 INT8 量化，最近几何三分类规则保持一致。
+5. 启动时记录模型加载前后 RSS 和首帧尺寸，便于定位真实相机峰值。
+6. PC 前端仍取原始 RGB 图像，显示相机 JSON 位置；不显示骨架、不做本机推理。
+
+无需修改配置或重新压缩。保留旧包用于回退，但旧包在当前相机已观察到 OOM，
+不能作为可运行版本依赖。当前 LowMem2 本地通过，尚未导入本相机验证。
+
+导入步骤：
+1. 关闭占用相机的 PC 查看器，用 ScepterGUITool 连接相机。
+2. 在“导入算法”功能选择完整 LowMem2 tar，等待导入和相机自动重启完成。
+   不选择固件升级，不导入 .img；相机帧率、全局 RGB 分辨率和 ToF 配置保持原状。
+3. 导入后关闭 ScepterGUITool，通知我完成，继续检查权限、启动日志及真实 JSON。
+   已发现此导入流程会把可执行文件变为 0644；如再次出现，可按已有授权仅恢复
+   /userdata/algorithm_data/ai_common_app_install/bin/ai_common_app 为 0755 再启动。
+4. PC 启动命令不变：
+   & 'D:\Workspace\nyx310-yolov8-ainn-20260921\verification\run_nyx310_palm_position.ps1'
+
+相机启动日志正常应依次出现：
+[HAND2] initialize
+[HAND2] loading .../model/palm.rknn
+[HAND2] before_rknn_init / after_rknn_init
+[HAND2] loading .../model/handpose.rknn
+[HAND2] both_models_ready
+[HAND2] input=[1600 x 1200] retained=[640 x 480] depth=[640 x 480] raw=1
+
+如启动失败，先读取这些阶段日志及内核 OOM 记录。不要反复启动耗尽内存的进程。
+新版的端侧峰值、NPU 推理及 JSON 验收尚未完成，不能仅凭本地验证认定内存问题已解决。
+
+结果格式保持：
+{"hands":[{"hand_id":1,"xyz_mm":[125.0,-60.0,800.0],"state":"GRASP","confidence":0.95,"valid":true}]}
+XYZ 是相机 RGB 坐标，X右/Y下/Z前，mm；俯视图使用 X、Z。
+valid=false 表示丢失/无效深度后的旧位置保持，不能作为新测量值。
+GRASP 仅表示手部姿态，不能证明已接触或抓牢物体。
+
+本包标定只用于 <DEVICE_SERIAL>。软件深度窗口 50<Z<5000mm，不改变硬件盲区。
+所有 raw-frame 测试已明确区分合成深度和历史/实际深度记录。
+QEMU 执行验证的是 ARM CPU 核心/装载，RKNN 模型另有 PC 模拟回归；均不是相机 NPU 实测。

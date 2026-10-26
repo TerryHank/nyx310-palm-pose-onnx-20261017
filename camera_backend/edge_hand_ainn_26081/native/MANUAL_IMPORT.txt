@@ -1,0 +1,52 @@
+NYX310 手部识别原生算法包：人工导入说明
+
+上传文件：ainn_PalmPoseGraspXYZ_Ver26_8_1_nyx310.tar
+目标：NYX310 / rv1126b / AINN SDK 26.08.1。
+本次归档根目录为 nyx310/ai_common_app_install/，不是旧 NYX320 候选包。
+不要解压、改名或重新压缩这个 tar；不要把单独的 RKNN 当作算法包导入。
+
+已内置：
+- 厂家原版 bin/ai_common_app（未修改）；
+- 自定义 ARM64 lib/libalg.so 与厂家配套 lib/librknnrt.so；
+- model/palm.rknn 和 model/handpose.rknn，两阶段 NPU 推理；
+- config/config.json（RGB + 对齐深度）、config/hand.json；
+- 掌心/手姿态解码、短时 ROI 跟踪、最多同时两只手；
+- OPEN / GRASP / CLOSED 最近几何分类与连续帧切换确认；
+- 手掌固定参考点、掌内 ROI 深度中位数、MAD 飞点拒绝、内参反投影；
+- 手 ID、位置时间滤波、深度无效时 HOLD + valid:false。
+
+操作：
+1. 先保留原来的算法安装包，以便需要时重新导入回退。
+2. 关闭占用相机的主机手部识别窗口和其他相机程序（Q/Esc 退出）。
+3. 用厂家 ScepterGUITool 连接 NYX310，进入“导入算法/Import Algorithm”功能，
+   选择上述完整 tar 文件。不要选择固件升级功能，也不要导入 .img 文件。
+4. 等待工具完成导入及相机自动重启，然后重新连接。
+5. 通过 ScepterGUITool 的 AI/AINN 结果窗口或 Scepter SDK 的算法结果接口
+   查看返回的 JSON。算法名称应为 PalmPoseGraspXYZ，版本 26.8.1-hand.1。
+6. 验证张掌、捏取、包握和握拳，并检查移动手掌时 XYZ 是否变化；移开手、
+   遮挡深度或进入盲区时，旧 XYZ 保留而 valid 必须为 false。
+
+结果格式（回调 timestamp 原样转发输入 RGB timestamp）：
+{"hands":[{"hand_id":1,"xyz_mm":[125.0,-60.0,800.0],"state":"GRASP","confidence":0.95,"valid":true}]}
+
+坐标：相机 RGB 坐标系，X 向右、Y 向下、Z 向前，单位 mm。
+它不是已经标定的房间/机械臂世界坐标；俯视图应使用 X、Z。
+confidence 是手部模型置信度，不是抓取成功率或深度精度；GRASP 是抓取姿态，
+不构成“确实抓住物体”的接触确认。完全丢手时保留旧类别，confidence=0、valid=false。
+
+本包为当前相机 <DEVICE_SERIAL> 预置此前读取到的 RGB 畸变参数，
+使用 SDK 输入帧提供的 RGB 内参，并校验是否与该标定相符。
+对同一台相机无需手工修改配置。不要未经标定直接复用到其他相机。
+
+软件接收深度为 50 < Z < 5000 mm；这不会改变硬件测距模式或消除 ToF 盲区。
+原始深度无效、不同步、空间支持不足或内参不符时，不会生成伪造 XYZ。
+
+验证边界：
+已完成模型 PC 模拟、原图前后处理回归、C++ 分类/深度/生命周期测试、
+AArch64 模拟执行、ARM 动态装载、接口/依赖和 tar 回读校验。
+主机完整流程测试用 ONNX Runtime 作为 NPU API 的离线替身，并使用历史原图；
+部分深度拒绝/HOLD 测试使用合成深度，另有历史实测 RGB-D 样本单独回归。
+以上不能替代真实相机 NPU、固件兼容、端侧帧率、GUITool 实际导入及现场精度验收。
+本次未连接、上传、升级、重启或修改相机；这些实机验收尚未执行。
+如果导入后出现固件/Runtime 不兼容，请保留错误信息并联系厂家核对配套版本，
+不要仅为尝试本算法而擅自升级提供目录中的固件。

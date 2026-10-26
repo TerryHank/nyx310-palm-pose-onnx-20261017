@@ -12,3 +12,6 @@ verification/bin/*
 *.avi
 *.mp4
 *.npz
+camera_backend/edge_hand_ainn_26081/*/sdk/
+camera_backend/edge_hand_ainn_26081/*/qemu/
+camera_backend/edge_hand_ainn_26081/*/build-*/

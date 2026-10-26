@@ -1,0 +1,67 @@
+NYX310 原生端侧包：抓取/张开、无手部ID、单个当前手、Fast2
+
+包：ainn_HagridBinaryXYZ_NoID_Fast2_Ver26_8_1_nyx310.tar
+算法名称：HagridBinaryXYZ；版本：26.8.1-binary.2。
+目标：NYX310 / RV1126B / AINN SDK26.08.1；适用标定相机<DEVICE_SERIAL>。
+原版厂家ai_common_app不改动；libalg.so、3个FP16 RKNN、运行库及配置已完整打包。
+不需要你编译、修改配置、解包或重新压缩。
+
+本次相机端行为：
+1. 已移除ID分配、跨手关联表和历史手列表；编译库不包含hand_id字段。
+2. 每帧只选择置信度最高的一个当前手。即使同时有多只真实手，也只输出一个。
+3. 只输出GRASP(0)/OPEN(1)，模型所有类别都参与判断手是否存在，不按类别丢手。
+   二分类比较原34类分数组的最大值；no_gesture/take_picture支持存在检测，
+   但不直接代表张开/抓取，二分类参考其余类别分组。没有重新训练二类权重。
+4. 仍使用掌部关键点固定参考=(wrist0+middle_mcp9)/2，掌内深度中位数与位置平滑。
+   全程只有一个共享ROI和一个位置平滑状态，不关联“谁的手”。
+5. 当前手消失：hand_present=false、hands=[]，清空旧位置；不会累积虚影。
+   当前仍检测到手、但深度无效：保留上一位置，position_status=HOLD、valid=false。
+6. 阈值默认0.175；降置信度会增加误检，不能把抓取姿态等同于实际抓牢物体。
+
+速度优化：
+YOLO输入640x480 -> 416x320，像素量为原43.3%，等比例缩放加补边。
+通常每5帧重定位一次Palm，定位失败时提前重定位；Hand Pose继续逐帧执行。
+深度先按2x2隔点投影，支持不足则回退全量投影；单手模式不再为两条历史记录重复计算。
+只保留当前处理帧和最新待处理帧，处理不及时就丢旧帧，不排队累积延迟。
+RGB采集仍为800x600、15FPS，ToF640x480。模型缩小后小手/远手的效果可能变化。
+目标是尽量接近15个新结果/秒，尚未导入相机实测，不能保证端侧已达到15FPS。
+JSON内包含timing_ms.yolo/palm/pose/depth/total，可直接读取各阶段实机耗时。
+
+人工部署：
+1. 退出当前前端（Q/Esc），用ScepterGUITool连接192.168.1.101。
+2. 选择“导入算法”，导入完整tar，等待导入和相机自动重启，再关闭工具。
+   不选择固件升级；此操作会替换当前算法，旧包已保留供你人工回退。
+3. 启动专用相机结果接收前端：
+   & 'D:\Workspace\nyx310-yolov8-ainn-20260921\verification\run_nyx310_hagrid_binary_camera.ps1'
+   前端读回算法名HagridBinaryXYZ、版本26.8.1-binary.2，接收原生两类JSON，无需本机推理或标签映射。
+4. 前端先设置并确认RGB800x600、15FPS，再开流；包内PoweronCapture=false。
+   不修改厂家固件开机默认，不在1600x1200下反复启动算法。
+5. 若导入器再次把app执行权限从0755改成0644，需要只恢复：
+   /userdata/algorithm_data/ai_common_app_install/bin/ai_common_app
+   既往已确认该导入器有此问题；包内app权限仍为0755。不要改其他文件或相机全局参数。
+
+新JSON示例：
+{"hand_present":true,"hands":[{"xyz_mm":[20,-30,800],"state":"GRASP","class_id":0,"confidence":0.8,"valid":true,"grasp_score":0.6,"open_score":0.2,"position_status":"VALID"}],"timing_ms":{"yolo":25,"palm":0,"pose":10,"depth":5,"total":42}}
+无手：{"hand_present":false,"hands":[],"timing_ms":{...}}
+confidence为手存在的最高原始类别分数；grasp_score/open_score为对应分组的最大分数，非校准概率。
+state经过单一全局3帧/120ms防抖；分组分数是当前帧分数，不给手部身份编号。
+XYZ是RGB相机坐标，X右/Y下/Z前，单位mm；右侧俯视显示X-Z，不是房间坐标。
+软件50<Z<5000mm不改变硬件测距盲区。当前无有效位置时xyz_mm=null。
+
+关于之前的一只手两个结果：
+已找到截图对应原始包#540，timestamp5676909：两个当前no_gesture预测被旧算法分配到两个历史记录，
+confidence分别0.5293/0.6646，两条valid=false，沿用不同旧深度。
+旧跨类别去重阈值0.8较宽松、允许两个框，又存在历史位置保留。
+新包采用类别无关IoU0.35去重并限制最高分单结果，且不再保存历史手列表。
+旧JSON没有框坐标，因此不能从该日志精确计算当时两个框的重叠率。
+
+验证范围：
+PyTorch/ONNX真实RGB回放，RKNN Toolkit2 2.3.2 RV1126B FP16转换和CPU模拟回归；
+真实生产C++库通过Host ONNX transport串联、无ID/单结果/无手清空/深度HOLD等测试；
+ARM64交叉编译、QEMU CPU核心/装载与8个SDK导出、完整tar逐文件权限/哈希回读通过。
+隔点与全量投影在合成平面上比较；真实手部定位精度尚未实测。
+主机帧率、QEMU和RKNN模拟器均不是相机NPU实测。
+本次没有上传、修改、重启相机；相机15FPS、内存峰值、精度及长期稳定性等待人工导入后验证。
+
+校验/报告：同目录NYX310_HAGRID_BINARY_FAST2_SHA256SUMS.txt、NYX310_HAGRID_BINARY_FAST2_VALIDATION.json。
+回退旧包：ainn_HagridPalmXYZ_Ver26_8_1_nyx310.tar，旧接收命令run_nyx310_hagrid_camera.ps1。

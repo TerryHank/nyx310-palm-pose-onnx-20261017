@@ -4,11 +4,22 @@
 OPEN/PINCH/GRIP 规则、掌内 ToF 中位数与 X-Z 前端。包含骨架、检测框、掌心 ROI 和 JSON 显示。
 测试硬件为 **NYX310**；NYX320 尚无实机验收。
 
+## 2026-10-26：电脑及相机后端备份
+
+仓库现为公开。电脑后端保留在 `verification/`，相机端恢复源码及构建/转换/打包脚本
+在 `camera_backend/edge_hand_ainn_26081/`，对应的 `libalg.so`、RKNN 和许可证在
+`camera_backend/artifacts/`。电脑 ONNX 也存档于 `camera_backend/pc_models/`。
+
+四个完整、未重打包的历史原生上传 TAR 已在本机独立备份；含厂家运行库与设备专属标定，
+不放入公开仓库。公开产物目录不是可直接导入的完整 TAR，不能冒充原生上传包。
+详细覆盖范围与恢复限制见 [camera_backend/README.md](camera_backend/README.md)，
+逐包与逐文件 SHA-256 见 `camera_backend/backup_manifest.json`。
+
 ## 基线
 
 `baseline-20261017` 保存侧面识别修复前的原始代码，25 个已有文件逐文件哈希核对后复制。
 原工作目录仍保留：`D:\Workspace\nyx310-yolov8-ainn-20260921`。
-不包含 SDK 二进制、权重、相机图像/录像、运行日志、设备登录凭据和旧 AINN 上传包。
+该基线不包含 SDK 二进制、权重、相机图像/录像、运行日志、设备登录凭据和旧 AINN 上传包。
 `rgbd_batch.dll` 是本项目的投影批处理桥，C++ 源码在 `verification/src/`。
 OpenCV Zoo 两个包装器及 Apache 2.0 许可证保留在 `verification/vendor/opencv_zoo/`。
 

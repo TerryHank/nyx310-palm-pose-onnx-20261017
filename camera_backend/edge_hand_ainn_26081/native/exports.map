@@ -1,0 +1,12 @@
+{
+  global:
+    algo_initialize;
+    algo_ctrl_start;
+    algo_ctrl_stop;
+    algo_push_frame;
+    algo_set_param;
+    algo_get_param;
+    algo_set_output_handle;
+    algo_release;
+  local: *;
+};

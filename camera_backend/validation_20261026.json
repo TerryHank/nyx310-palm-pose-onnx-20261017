@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-26",
+  "host": "Ubuntu 22.04 WSL, x86_64",
+  "host_cmake_builds": {
+    "native": "PASS",
+    "native_lowmem": "PASS",
+    "native_hagrid": "PASS",
+    "native_hagrid_binary": "PASS"
+  },
+  "host_build_uses_rknn_mock": true,
+  "historical_native_packages_inspected": 4,
+  "native_package_copy_sha256_matches": true,
+  "extracted_artifact_sha256_matches": true,
+  "elf_machine": "AArch64 (183)",
+  "recovered_python_ast_parse": "PASS",
+  "arm_rebuilt_this_run": false,
+  "rknn_npu_inference_tested_this_run": false,
+  "camera_connected_this_run": false,
+  "raw_packages_repacked": false,
+  "source_equal_to_lost_original_directory_proven": false
+}
